@@ -1,0 +1,220 @@
+html {
+    --color-1: darkred;
+    --color-2: white;
+    --color-3: lightgrey;
+    --color-4: black;
+    --color-grid:#0000ff;
+    --position-X:0px;
+    --width:0px;
+    --color-player:white;
+    --color-player-winner:white;
+    --height:0px;
+    --heightX:0px;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    min-height: 100%;
+    background: url('../img/bg.png') 50% 0%;
+    background-repeat: no-repeat;
+    
+  
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-top:1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.animation {
+  
+    position: absolute;
+    width:100px;
+    height:100px;
+    left:var(--position-X);
+    top:-50px;
+    width:var(--width);
+    border-radius: 50%;
+    background-color: var(--color-player);
+    height: var(--height);
+    animation: drop 0.3s;
+    animation-fill-mode: forwards;
+}
+.fake-anim {
+    position: absolute;
+    width:100px;
+    height:100px;
+    left:var(--position-X);
+    top:-50px;
+    width:var(--width);
+    border-radius: 50%;
+    height: var(--height);
+    
+}
+
+@keyframes drop {
+    From{
+        transform:translateY(0);
+    }
+    To {
+        transform:translateY(var(--heightY));
+    }
+}
+*
+h2 {
+    text-align: center;
+    font-size: 3em;
+    color: #800a0a;
+    text-shadow: 2px 2px 2px #800a0a;
+    font-family: 'New Tegomin', serif;
+}
+input[type="submit"] {
+    cursor: pointer;
+}
+
+#submit {
+    background-color: #800a0a;
+    color: white;
+}
+#submit:hover {
+    background-color: white;
+    color: #800a0a;
+}
+
+
+input[type="text"], input[type="submit"], select {
+    border: none;
+    outline: none;
+    padding:1em;
+    width:100%;
+   
+    font-size:1.5em;
+    border-radius:20px;
+    box-shadow: 2px 2px 2px black;
+}
+input::placeholder {
+   
+    text-align: center;
+}
+
+#message {
+    height:50px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+   
+    margin:0 auto;
+    height:50vh;
+    width:50vw;
+}
+
+form fieldset {
+    padding:.5em 1em;
+   width:300px;
+   display: flex;
+   flex-direction: column;
+}
+
+.error-msg {
+   font-weight: bold;
+    color:red;
+    min-height:1em;
+    text-align: center;
+}
+
+.header {
+    height:2em;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    border:2px solid black;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px black;
+}
+
+.header:hover {
+    background-color: white;
+    color:blue;
+}
+.four {
+    font-size: 3em;
+    color:red;
+}
+#game {
+    display: none;
+}
+#grid {
+    position: relative;
+
+    height:500px;
+    width:500px;
+    background-color: var(--color-grid);
+   row-gap: 1em;
+   column-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 0.3fr 1fr;
+    grid-auto-rows: 1fr;
+    margin:auto;
+    padding:0.3em 1em 1em 1em;
+
+    box-shadow: 5px 5px 5px rgb(3, 3, 97) ;
+}
+
+.gameOver {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-player-winner);
+    text-align: center;
+    font-size: 1.5em;
+    padding:2em;
+    font-family: 'New Tegomin', serif;
+
+
+    
+}
+
+#newGame {
+    color: white;
+    font-weight: bold;
+    background-color:transparent;
+    margin:1.5em;
+    border:none;
+    border:2px solid white;
+    padding:1em;
+    border-radius: 10px;
+ 
+}
+#newGame:hover {
+    background-color: white;
+    color:var(--color-player-winner);
+}
+.cell {
+    background-color: white;
+    border:1px solid black;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 50%;
+ 
+}
