@@ -19,10 +19,7 @@ const game = {
             'orange': 'orange',
             'rose':'#f0f'
         }
-        game.players={
-            1 :{name:'', color:''},
-            2: {name:'', color:''}
-        };
+       
     
         game.currentPlayer= 1;
         game.msg = '';
@@ -39,69 +36,74 @@ const game = {
     checkGameOver:function(targetCell) {
         //TODO
         
-        const row = targetCell.dataset.column[2];
-        const col = targetCell.dataset.column[0];
-        let arrays = game.createArrays(row, col, targetCell);
-      if(game.checkAlignement(arrays.diag) || game.checkAlignement(arrays.row) ||game.checkAlignement(arrays.col)) {
-         game.winner = game.currentPlayer;
-          return true;
-      }
+        const row = targetCell.dataset.column[2]-1;
+        const col = targetCell.dataset.column[0]-1;
+        //horizontal
+        // if(game.checkHorizontal(row) || game.checkVertical(col) || game.checkDiagonal(row, col)) {
+            if(game.checkHorizontal(row) || game.checkVertical(col) || game.checkDiagonal(row, col)){
+            game.winner = game.currentPlayer;
+            return true;
+        }
+        return false;
+
+        console.log(grid.cells[row][col]);
+    //     let arrays = game.createArrays(row, col, targetCell);
+      
+    //   if(game.checkAlignement(arrays.diag) || game.checkAlignement(arrays.row) ||game.checkAlignement(arrays.col)) {
+
+    //      game.winner = game.currentPlayer;
+    //       return true;
+    //   }
      
-      return false;
+    //   return false;
        
     },
-    createArrays: function(row, col, target) {
-        let rowArray=[];
-        let colArray=[];
-        let diagArray=[];
-        
-        const cells = document.querySelectorAll('.cell');
+    checkHorizontal:function(row)  {
+        let compteur=0;
       
-        for (let cell of cells) {
-        
+        for(let i=0; i < grid.nbCol; i++) {
+           
+         compteur = (grid.cells[row][i] == 'player' + game.currentPlayer) ? compteur+1 : 0;
+              
+              
+               if(compteur >= 4){return true;}
           
-            if(cell.dataset.column[2] == row) {
-             
-                rowArray.push(cell);
-                
-            }
-            if(cell.dataset.column[0] == col) {
-              
-                colArray.push(cell);
-            } 
-            
-              
-                for(let i = -8; i < 8 ;i++)  {
-               col =parseInt(col);
-               row = parseInt(row);
-               
-               
-                    if((cell.dataset.column[0] == col + i && cell.dataset.column[2] == row + i) || (cell.dataset.column[0] == col - i && cell.dataset.column[2] == row - i) || (cell.dataset.column[0] == col + i && cell.dataset.column[2] == row - i) || (cell.dataset.column[0] == col - i && cell.dataset.column[2] == row + i) ) {
-                        diagArray.push(cell);
-
-                    }
-                }
-                
-            }
-            let diagSet = new Set(diagArray);
-            let diag = [...diagSet];
-           return  {
-               'row':rowArray,
-               'col':colArray,
-               'diag':diag
-           }
-        },
-    checkAlignement:function(array) {
-     
-            for(let i = 0; i < array.length-3; i++) {
-               
-                
-                if(array[i].dataset.state == "player"+ game.currentPlayer && array[i+1].dataset.state == "player"+ game.currentPlayer && array[i+2].dataset.state == "player"+ game.currentPlayer && array[i+3].dataset.state == "player"+ game.currentPlayer) {
-                  
-                   return true;
-                }
-               
-            }
-            return false;
+          
         }
+        return false;
+
+    },
+    checkVertical:function(col) {
+        let compteur=0;
+      
+        for(let i=0; i < grid.nbCol; i++) {
+           
+            compteur = (grid.cells[i][col] == 'player' + game.currentPlayer) ? compteur+1 : 0;
+          
+           
+            if(compteur >= 4){return true;}
+       
+        }
+        return false;
+
+    },
+    checkDiagonal:function(row, col) {
+        let compteur = 0;
+      let shift = row - col;
+      for (let i = Math.max(shift, 0); i < Math.min(grid.nbCol, grid.nbCol + shift); i++) {
+        compteur = (grid.cells[i][i - shift] == 'player' + game.currentPlayer) ? compteur+1 : 0;
+          if (compteur >= 4) return true;
+      }
+          // Anti-diagonal
+      compteur= 0;
+      shift = row + col;
+      for (let i = Math.max(shift - grid.nbCol + 1, 0); i < Math.min(grid.nbCol, shift + 1); i++) {
+     
+        compteur = (grid.cells[i][shift - i] == 'player' + game.currentPlayer) ? compteur+1 : 0;
+        if (compteur >= 4) return true;
+      }
+        return false;
+
+    }
+    
  }

@@ -4,6 +4,7 @@ const grid = {
     init:function() {
         grid.nbCol=7;
         grid.cells=[];
+        grid.initGrid()
         grid.displayGrid();
       
 
@@ -24,10 +25,20 @@ const grid = {
                 document.querySelector('#grid').appendChild(divElement);
                 divElement.classList.add('cell');
                 divElement.dataset.column = col+':'+row;
-                divElement.dataset.state = '';
+                
                 
             }
             
+        }
+    },
+    initGrid:function(){
+
+        for (let row = 0; row < grid.nbCol; row++) {
+            grid.cells.push([]);
+           for(let col = 0; col< grid.nbCol; col++) {
+               grid.cells[row].push('');
+           }
+           
         }
        
         
@@ -108,7 +119,7 @@ const grid = {
         columnCells.reverse();
        for (let cell of columnCells) {
         let target='';   
-            if(cell.dataset.state == "") {
+            if(!cell.dataset.state) {
                target = cell;
                return target;  
            }   

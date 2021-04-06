@@ -23,7 +23,7 @@ const app = {
         if(game.currentPlayer == 1) {
             document.getElementById('submit').value = 'Démarrer la partie';
         } else if(game.currentPlayer == 2) {
-           
+         
             document.getElementById('before-game').style.display='none';
             document.getElementById('game').style.display="block";
         } 
@@ -81,6 +81,9 @@ const app = {
            
        
         target.dataset.state = 'player'+ game.currentPlayer;
+        let columnIndex = target.dataset.column[0]-1;
+        let rowIndex = target.dataset.column[2]-1;
+        grid.cells[rowIndex][columnIndex] = 'player'+ game.currentPlayer;
         
         setTimeout(()=> {
             
