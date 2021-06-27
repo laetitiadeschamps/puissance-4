@@ -12,13 +12,12 @@ html {
     --heightX:0px;
 }
 
+/* General */
 body {
     font-family: 'Titillium Web', sans-serif;
     min-height: 100%;
     background: url('../img/bg.png') 50% 0%;
     background-repeat: no-repeat;
-    
-  
 }
 
 h1 {
@@ -28,10 +27,16 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
 }
+h2 {
+    text-align: center;
+    font-size: 3em;
+    color: #800a0a;
+    text-shadow: 2px 2px 2px #800a0a;
+    font-family: 'New Tegomin', serif;
+}
 
-
+/* Animation falling token */
 .animation {
-  
     position: absolute;
     width:100px;
     height:100px;
@@ -64,18 +69,11 @@ h1 {
         transform:translateY(var(--heightY));
     }
 }
-*
-h2 {
-    text-align: center;
-    font-size: 3em;
-    color: #800a0a;
-    text-shadow: 2px 2px 2px #800a0a;
-    font-family: 'New Tegomin', serif;
-}
+
+/* Form before game */
 input[type="submit"] {
     cursor: pointer;
 }
-
 #submit {
     background-color: #800a0a;
     color: white;
@@ -85,35 +83,25 @@ input[type="submit"] {
     color: #800a0a;
 }
 
-
 input[type="text"], input[type="submit"], select {
     border: none;
     outline: none;
     padding:1em;
     width:100%;
-   
     font-size:1.5em;
     border-radius:20px;
     box-shadow: 2px 2px 2px black;
 }
-input::placeholder {
-   
+input::placeholder { 
     text-align: center;
 }
 
-#message {
-    height:50px;
-    text-align: center;
-    font-weight: bold;
-    color: red;
-}
 
 form {
     display: flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
-   
     margin:0 auto;
     height:50vh;
     width:50vw;
@@ -133,6 +121,38 @@ form fieldset {
     text-align: center;
 }
 
+/* page structure */
+#message {
+    height:50px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+.four {
+    font-size: 3em;
+    color:red;
+}
+#game {
+    display: none;
+}
+
+/* grid */
+#grid {
+    position: relative;
+    height:500px;
+    width:500px;
+    background-color: var(--color-grid);
+    row-gap: 1em;
+    column-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 0.3fr 1fr;
+    grid-auto-rows: 1fr;
+    margin:auto;
+    padding:0.3em 1em 1em 1em;
+    box-shadow: 5px 5px 5px rgb(3, 3, 97) ;
+}
+
 .header {
     height:2em;
     text-align: center;
@@ -146,36 +166,19 @@ form fieldset {
     border-radius: 10px;
     box-shadow: 1px 1px 1px black;
 }
-
 .header:hover {
     background-color: white;
     color:blue;
 }
-.four {
-    font-size: 3em;
-    color:red;
-}
-#game {
-    display: none;
-}
-#grid {
-    position: relative;
-
-    height:500px;
-    width:500px;
-    background-color: var(--color-grid);
-   row-gap: 1em;
-   column-gap: 1em;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 0.3fr 1fr;
-    grid-auto-rows: 1fr;
-    margin:auto;
-    padding:0.3em 1em 1em 1em;
-
-    box-shadow: 5px 5px 5px rgb(3, 3, 97) ;
+.cell {
+    background-color: white;
+    border:1px solid black;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 50%;
 }
 
+
+/* Game over modal */
 .gameOver {
     position: absolute;
     top:0;
@@ -190,10 +193,7 @@ form fieldset {
     text-align: center;
     font-size: 1.5em;
     padding:2em;
-    font-family: 'New Tegomin', serif;
-
-
-    
+    font-family: 'New Tegomin', serif;  
 }
 
 #newGame {
@@ -205,16 +205,8 @@ form fieldset {
     border:2px solid white;
     padding:1em;
     border-radius: 10px;
- 
 }
 #newGame:hover {
     background-color: white;
     color:var(--color-player-winner);
-}
-.cell {
-    background-color: white;
-    border:1px solid black;
-    box-shadow: 2px 2px 2px black;
-    border-radius: 50%;
- 
 }

@@ -1,57 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Meta data -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puissance 4</title>
-
     <link rel="shortcut icon" href="img/bg.png" type="image/x-icon">
-
+    <!-- Fonts & css -->
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <header class="page-top">
-        
+    <header class="page-top">    
         <h1 class="page-title">Puissance <span class="four">4</span></h1>
     </header>
     <main class="page-content">
         <h2>Joueur <span id="playerNumber"> 1</span> <span id="player_name"></span></h2>
-       <form id="before-game">
+        <form id="before-game">
            <fieldset>
                <input type="text" name="name" placeholder="Entrez votre nom" id="name">
                <small class="error-msg"></small>
             </fieldset>
-            <fieldset class="color">
-            
+            <fieldset class="color">  
                <select id="color" name="color">
-              
                </select>
                <small class="error-msg"></small>
-           </fieldset>
-           <fieldset>
+            </fieldset>
+            <fieldset>
                <input type="submit" id="submit" value="Joueur suivant"/>
-           </fieldset>
-       </form>
-       <div id="game">
-      
-        <p id="message"></p>
-           <div id="grid">
-           
-           </div>
-       </div>
+            </fieldset>
+        </form>
+        <div id="game">
+            <p id="message"></p>
+                <div id="grid"></div>
+        </div>
     </main>
     
-
-    <script src="js/app.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/grid.js"></script>
+    <footer>
+        <script src="js/app.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/grid.js"></script>
+    </footer>
 </body>
 
 </html>
